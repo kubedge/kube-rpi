@@ -1,0 +1,26 @@
+- name: Creates directory
+  file: path={{ item }} state=directory
+  become: true
+  with_items:
+      - "{{ kubedge_dir }}"
+      - "{{ kubedge_script_dir }}"
+
+- name: copy detect_bluetooth.py
+  become: true
+  copy:
+    src: "{{ kubesimbase_dir }}utilities/detect_bluetooth.py" 
+    dest: "{{ kubedge_script_dir }}/detect_bluetooth.py"
+
+- name: install dependencies
+  apt: name={{ item }} state=present force=yes
+  become: true
+  with_items:
+      - bluetooth
+      - bluez
+      - python-bluez
+      - python-yaml
+
+- name: start detect_bluetooth.py
+  shell: python "{{ kubedge_script_dir }}"/detect_bluetooth.py &
+  become: true
+
