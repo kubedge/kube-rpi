@@ -1,0 +1,98 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nas-pi-vol01-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: local-storage
+  volumeName: nas-pi-vol01
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nas-pi-vol02-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: local-storage
+  volumeName: nas-pi-vol02
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nas-pi-vol03-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: local-storage
+  volumeName: nas-pi-vol03
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nas-pi-vol04-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: local-storage
+  volumeName: nas-pi-vol04
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nas-pi-vol05-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: local-storage
+  volumeName: nas-pi-vol05
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nas-pi-vol06-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: local-storage
+  volumeName: nas-pi-vol06
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nas-pi-vol07-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: local-storage
+  volumeName: nas-pi-vol07
+...
