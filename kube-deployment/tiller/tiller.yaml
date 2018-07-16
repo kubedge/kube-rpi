@@ -1,4 +1,3 @@
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -24,7 +23,7 @@ spec:
           value: kube-system
         - name: TILLER_HISTORY_MAX
           value: "0"
-        image: jbrette/tiller-arm32v7:latest
+        image: jbrette/tiller-arm32v7:2.9
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
