@@ -1,0 +1,140 @@
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube-node02-vol01-pod
+spec:
+  volumes:
+    - name: kube-node02-pv-storage
+      persistentVolumeClaim:
+       claimName: kube-node02-vol01-claim
+  containers:
+    - name: kube-node02-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: kube-node02-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube-node02-vol02-pod
+spec:
+  volumes:
+    - name: kube-node02-pv-storage
+      persistentVolumeClaim:
+       claimName: kube-node02-vol02-claim
+  containers:
+    - name: kube-node02-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: kube-node02-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube-node02-vol03-pod
+spec:
+  volumes:
+    - name: kube-node02-pv-storage
+      persistentVolumeClaim:
+       claimName: kube-node02-vol03-claim
+  containers:
+    - name: kube-node02-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: kube-node02-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube-node02-vol04-pod
+spec:
+  volumes:
+    - name: kube-node02-pv-storage
+      persistentVolumeClaim:
+       claimName: kube-node02-vol04-claim
+  containers:
+    - name: kube-node02-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: kube-node02-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube-node02-vol05-pod
+spec:
+  volumes:
+    - name: kube-node02-pv-storage
+      persistentVolumeClaim:
+       claimName: kube-node02-vol05-claim
+  containers:
+    - name: kube-node02-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: kube-node02-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube-node02-vol06-pod
+spec:
+  volumes:
+    - name: kube-node02-pv-storage
+      persistentVolumeClaim:
+       claimName: kube-node02-vol06-claim
+  containers:
+    - name: kube-node02-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: kube-node02-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube-node02-vol07-pod
+spec:
+  volumes:
+    - name: kube-node02-pv-storage
+      persistentVolumeClaim:
+       claimName: kube-node02-vol07-claim
+  containers:
+    - name: kube-node02-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: kube-node02-pv-storage
+...
