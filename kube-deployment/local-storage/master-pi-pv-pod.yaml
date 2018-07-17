@@ -1,0 +1,140 @@
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: master-pi-vol01-pod
+spec:
+  volumes:
+    - name: master-pi-pv-storage
+      persistentVolumeClaim:
+       claimName: master-pi-vol01-claim
+  containers:
+    - name: master-pi-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: master-pi-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: master-pi-vol02-pod
+spec:
+  volumes:
+    - name: master-pi-pv-storage
+      persistentVolumeClaim:
+       claimName: master-pi-vol02-claim
+  containers:
+    - name: master-pi-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: master-pi-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: master-pi-vol03-pod
+spec:
+  volumes:
+    - name: master-pi-pv-storage
+      persistentVolumeClaim:
+       claimName: master-pi-vol03-claim
+  containers:
+    - name: master-pi-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: master-pi-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: master-pi-vol04-pod
+spec:
+  volumes:
+    - name: master-pi-pv-storage
+      persistentVolumeClaim:
+       claimName: master-pi-vol04-claim
+  containers:
+    - name: master-pi-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: master-pi-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: master-pi-vol05-pod
+spec:
+  volumes:
+    - name: master-pi-pv-storage
+      persistentVolumeClaim:
+       claimName: master-pi-vol05-claim
+  containers:
+    - name: master-pi-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: master-pi-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: master-pi-vol06-pod
+spec:
+  volumes:
+    - name: master-pi-pv-storage
+      persistentVolumeClaim:
+       claimName: master-pi-vol06-claim
+  containers:
+    - name: master-pi-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: master-pi-pv-storage
+...
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: master-pi-vol07-pod
+spec:
+  volumes:
+    - name: master-pi-pv-storage
+      persistentVolumeClaim:
+       claimName: master-pi-vol07-claim
+  containers:
+    - name: master-pi-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: master-pi-pv-storage
+...
