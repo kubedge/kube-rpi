@@ -1,0 +1,14 @@
+---
+[picluster:children]
+masters
+workers
+
+[masters]
+master-pi.kubedge.cloud
+
+[workers]
+nas-pi.kubedge.cloud
+home-pi.kubedge.cloud
+
+[cluster2]
+kubemaster-pi.kubedge.cloud
