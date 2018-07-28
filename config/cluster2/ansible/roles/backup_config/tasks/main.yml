@@ -5,6 +5,8 @@
   - /etc/hosts
   - /etc/hostname
   - /etc/network/interfaces
+  - /var/lib/kubelet/config.yaml
+  - /etc/dhcp/dhcpd.conf
 
 - name: find interfaces files
   find:

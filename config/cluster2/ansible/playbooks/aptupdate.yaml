@@ -1,4 +1,4 @@
-- hosts: piclusters
+- hosts: picluster
   tasks:
   - name: update apt
     become: true
