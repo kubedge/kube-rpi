@@ -1,0 +1,13 @@
+---
+[picluster:children]
+masters
+workers
+
+[masters]
+kubemaster-pi.kubepi
+
+[workers]
+kube-node01.kubepi
+kube-node02.kubepi
+kube-node03.kubepi
+kube-node04.kubepi

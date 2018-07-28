@@ -1,0 +1,8 @@
+---
+  - name: Setup the disks
+    hosts: picluster
+    become: yes
+    vars_files:
+      - ../group_vars/all
+    roles:
+      - { role: ../roles/mount_disks }

@@ -1,0 +1,10 @@
+[Unit]
+Description = Mount for Kubernetes vol3
+
+[Mount]
+What=/dev/mmcblk0p7
+Where=/mnt/disks/vol3
+Type=ext4
+
+[Install]
+WantedBy = multi-user.target
