@@ -1,0 +1,41 @@
+- name: fetch common files
+  become: yes
+  fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item }} src={{ item }} flat=yes
+  with_items:
+  - /etc/hosts
+  - /etc/hostname
+  - /etc/network/interfaces
+
+- name: find interfaces files
+  find:
+    paths: /etc/network/interfaces.d/
+  register: interface_files
+
+- name: fetch interfaces files
+  become: yes
+  fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
+  with_items: "{{ interface_files.files }}"
+
+- name: find kubernetes files
+  find:
+    paths: /etc/kubernetes/
+    patterns: '*.conf,*.yaml'
+  register: kubernetes_files
+
+- name: fetch kubernetes files
+  become: yes
+  fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
+  with_items: "{{ kubernetes_files.files }}"
+
+- name: find kubelet files
+  find:
+    paths: /etc/systemd/system/kubelet.service.d/
+    patterns: '*.conf,*.yaml'
+  register: kubelet_files
+
+- name: fetch kubelet files
+  become: yes
+  fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
+  with_items: "{{ kubelet_files.files }}"
+
+
