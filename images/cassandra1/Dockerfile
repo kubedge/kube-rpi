@@ -137,7 +137,10 @@ RUN set -ex; \
 	sed -i 's/JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.authenticate=true"/JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.authenticate=false"/g' $CASSANDRA_CONFIG/cassandra-env.sh; \
 	sed -i 's/JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.password.file=\/etc\/cassandra\/jmxremote.password"//g' $CASSANDRA_CONFIG/cassandra-env.sh;
 
+COPY ready-probe.sh /ready-probe.sh
+RUN chmod 777 /ready-probe.sh
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod 777 /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 RUN mkdir -p /var/lib/cassandra "$CASSANDRA_CONFIG" \
