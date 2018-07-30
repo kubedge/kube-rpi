@@ -38,7 +38,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/vol1
+    path: /mnt/disks/vol2
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -63,7 +63,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/vol1
+    path: /mnt/disks/vol3
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -88,7 +88,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/vol1
+    path: /mnt/disks/vol4
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -113,7 +113,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/vol1
+    path: /mnt/disks/vol5
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -138,7 +138,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/vol1
+    path: /mnt/disks/vol6
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -163,7 +163,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/vol1
+    path: /mnt/disks/vol7
   nodeAffinity:
     required:
       nodeSelectorTerms:
