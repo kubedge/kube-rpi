@@ -30,6 +30,18 @@
   fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
   with_items: "{{ kubernetes_files.files }}"
 
+- name: find keys files
+  find:
+    paths: /etc/kubernetes/
+    patterns: '*.crt,*.pub,*.key'
+    recurse: yes
+  register: kubernetes_keys
+
+- name: create empty key
+  become: yes
+  fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src=/dev/null flat=yes
+  with_items: "{{ kubernetes_keys.files }}"
+
 - name: find kubelet files
   find:
     paths: /etc/systemd/system/kubelet.service.d/
