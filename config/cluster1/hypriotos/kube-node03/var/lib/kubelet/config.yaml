@@ -18,10 +18,12 @@ cgroupsPerQOS: true
 clusterDNS:
 - 10.96.0.10
 clusterDomain: cluster.local
+configMapAndSecretChangeDetectionStrategy: Watch
 containerLogMaxFiles: 5
 containerLogMaxSize: 10Mi
 contentType: application/vnd.kubernetes.protobuf
 cpuCFSQuota: true
+cpuCFSQuotaPeriod: 100ms
 cpuManagerPolicy: none
 cpuManagerReconcilePeriod: 10s
 enableControllerAttachDetach: true
@@ -53,6 +55,7 @@ kubeAPIQPS: 5
 makeIPTablesUtilChains: true
 maxOpenFiles: 1000000
 maxPods: 110
+nodeLeaseDurationSeconds: 40
 nodeStatusUpdateFrequency: 10s
 oomScoreAdj: -999
 podPidsLimit: -1
