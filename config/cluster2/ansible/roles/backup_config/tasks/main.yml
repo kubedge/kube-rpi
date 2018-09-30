@@ -22,6 +22,7 @@
   find:
     paths: /etc/kubernetes/
     patterns: '*.conf,*.yaml'
+    recurse: yes
   register: kubernetes_files
 
 - name: fetch kubernetes files
