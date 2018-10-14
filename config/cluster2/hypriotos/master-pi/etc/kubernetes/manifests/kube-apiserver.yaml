@@ -14,7 +14,7 @@ spec:
   - command:
     - kube-apiserver
     - --authorization-mode=Node,RBAC
-    - --advertise-address=192.168.1.95
+    - --advertise-address=192.168.3.103
     - --allow-privileged=true
     - --client-ca-file=/etc/kubernetes/pki/ca.crt
     - --enable-admission-plugins=NodeRestriction
@@ -44,7 +44,7 @@ spec:
     livenessProbe:
       failureThreshold: 8
       httpGet:
-        host: 192.168.1.95
+        host: 192.168.3.103
         path: /healthz
         port: 6443
         scheme: HTTPS

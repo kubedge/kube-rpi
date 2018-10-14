@@ -20,3 +20,13 @@ ff02::3 ip6-allhosts
 192.168.1.93 nas-pi.kubedge.cloud nas-pi
 192.168.1.94 kubemaster-pi.kubedge.cloud kubemaster-pi
 192.168.1.95 master-pi.kubedge.cloud master-pi
+
+192.168.3.1   myrouter.home
+192.168.3.100 jebpc-eth.home
+192.168.3.101 jebpc-wlan.home
+192.168.3.102 nas-pi.home
+192.168.3.103 master-pi.home
+192.168.3.104 home-pi.home
+
+192.168.10.1    router.kubesim-01.cl2.kubedge
+192.168.10.100  pc1.kubesim-01.cl2.kubedge
