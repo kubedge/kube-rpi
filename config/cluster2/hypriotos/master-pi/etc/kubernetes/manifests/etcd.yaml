@@ -53,11 +53,11 @@ spec:
   priorityClassName: system-cluster-critical
   volumes:
   - hostPath:
-      path: /etc/kubernetes/pki/etcd
-      type: DirectoryOrCreate
-    name: etcd-certs
-  - hostPath:
       path: /var/lib/etcd
       type: DirectoryOrCreate
     name: etcd-data
+  - hostPath:
+      path: /etc/kubernetes/pki/etcd
+      type: DirectoryOrCreate
+    name: etcd-certs
 status: {}

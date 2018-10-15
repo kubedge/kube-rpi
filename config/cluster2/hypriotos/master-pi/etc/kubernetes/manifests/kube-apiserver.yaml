@@ -14,7 +14,7 @@ spec:
   - command:
     - kube-apiserver
     - --authorization-mode=Node,RBAC
-    - --advertise-address=192.168.3.103
+    - --advertise-address=192.168.2.1
     - --allow-privileged=true
     - --client-ca-file=/etc/kubernetes/pki/ca.crt
     - --enable-admission-plugins=NodeRestriction
@@ -39,12 +39,12 @@ spec:
     - --service-cluster-ip-range=10.96.0.0/12
     - --tls-cert-file=/etc/kubernetes/pki/apiserver.crt
     - --tls-private-key-file=/etc/kubernetes/pki/apiserver.key
-    image: k8s.gcr.io/kube-apiserver:v1.12.0
+    image: k8s.gcr.io/kube-apiserver:v1.12.1
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8
       httpGet:
-        host: 192.168.3.103
+        host: 192.168.2.1
         path: /healthz
         port: 6443
         scheme: HTTPS
@@ -74,6 +74,10 @@ spec:
   priorityClassName: system-cluster-critical
   volumes:
   - hostPath:
+      path: /etc/kubernetes/pki
+      type: DirectoryOrCreate
+    name: k8s-certs
+  - hostPath:
       path: /etc/ssl/certs
       type: DirectoryOrCreate
     name: ca-certs
@@ -89,8 +93,4 @@ spec:
       path: /etc/ca-certificates
       type: DirectoryOrCreate
     name: etc-ca-certificates
-  - hostPath:
-      path: /etc/kubernetes/pki
-      type: DirectoryOrCreate
-    name: k8s-certs
 status: {}

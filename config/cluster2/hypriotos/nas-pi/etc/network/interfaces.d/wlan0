@@ -1,8 +1,18 @@
-auto wlan0
-allow-hotplug wlan0
-iface wlan0 inet manual
-wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-iface owensssid inet dhcp
-iface ownenssid3 inet dhcp
-iface ewainternet inet dhcp
-iface ewaguest inet dhcp
+$ cat /etc/network/interfaces.d/wlan0
+
+# Configuration to use the PI as wifi client
+# auto wlan0
+# allow-hotplug wlan0
+# iface wlan0 inet manual
+# wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+# iface owensssid inet dhcp
+# iface ownenssid3 inet dhcp
+# iface ewainternet inet dhcp
+# iface ewaguest inet dhcp
+
+# allow-hotplug wlan0
+# iface wlan0 inet manual
+#    adddress 192.168.22.1
+#    netmask 255.255.255.0
+# 
+# up iptables-restore < /etc/iptables.ipv4.nat
