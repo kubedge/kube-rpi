@@ -1,0 +1,4 @@
+auto pan0
+iface pan0 inet dhcp
+  bridge_stp off
+  bridge_ports eth0

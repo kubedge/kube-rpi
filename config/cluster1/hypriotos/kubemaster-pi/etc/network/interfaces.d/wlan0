@@ -1,4 +1,8 @@
 auto wlan0
-iface wlan0 inet dhcp
-        wpa-ssid xxx_wpa_ssid_xxx
-        wpa-psk xxx_wpa_psk_xxx
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface owensssid inet dhcp
+iface ownenssid3 inet dhcp
+iface ewainternet inet dhcp
+iface ewaguest inet dhcp

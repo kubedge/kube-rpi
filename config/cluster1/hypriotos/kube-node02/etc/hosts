@@ -5,7 +5,7 @@
 # b.) change or remove the value of 'manage_etc_hosts' in
 #     /etc/cloud/cloud.cfg or cloud-config from user-data
 #
-127.0.1.1 kube-node02 black-pearl
+127.0.1.1 kube-node02.localdomain kube-node02
 127.0.0.1 localhost
 
 # The following lines are desirable for IPv6 capable hosts
@@ -16,3 +16,106 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ff02::3 ip6-allhosts
 
+# DHCP Server 1 on new router (domain: kubedge.cloud)
+192.168.1.1  newrouter.kubedge.cloud newrouter
+192.168.1.13 myrouter.kubedge.cloud myrouter
+192.168.1.95 master-pi.kubedge.cloud master-pi
+192.168.1.92 home-pi.kubedge.cloud home-pi
+192.168.1.93 nas-pi.kubedge.cloud nas-pi
+192.168.1.94 kubemaster-pi.kubedge.cloud kubemaster-pi
+
+# DHCP Server 2 on kubemaster-pi (domain: cluster1.kubedge.cloud)
+192.168.2.1   kubemaster-pi.cluster1.kubedge.cloud kubemaster-pi
+192.168.2.101 kube-node01.cluster1.kubedge.cloud kube-node01
+192.168.2.102 kube-node02.cluster1.kubedge.cloud kube-node02
+192.168.2.103 kube-node03.cluster1.kubedge.cloud kube-node03
+192.168.2.104 kube-node04.cluster1.kubedge.cloud kube-node04
+
+# ########################################
+# Cluster 1 LTE and 5G Simulation
+# ########################################
+
+# DCP Server 11 on kube-node01 wifi on cluster1 (domain: kubewifi-01.cl1.kubedge)
+192.168.11.1    router.kubewifi-01.cl1.kubedge
+
+# DCP Server 12 on kube-node02 wifi one cluster1 (domain: kubewifi-02.cl1.kubedge)
+192.168.12.1    router.kubewifi-02.cl1.kubedge
+
+# DCP Server 13 on kube-node03 wifi one cluster1 (domain: kubewifi-03.cl1.kubedge)
+192.168.13.1    router.kubewifi-03.cl1.kubedge
+
+# DCP Server 14 on kube-node04 wifi one cluster1 (domain: kubewifi-04.cl1.kubedge)
+192.168.14.1    router.kubewifi-04.cl1.kubedge
+
+# DCP Server 111 on kube-node01 bluetooth on cluster1(domain: kubebt-01.cl1.kubedge)
+192.168.111.1   router.kubebt-01.cl1.kubedge
+
+# DCP Server 112 on kube-node02 bluetooth one cluster1 (domain: kubebt-02.cl1.kubedge)
+192.168.112.1   router.kubebt-02.cl1.kubedge
+
+# DCP Server 113 on kube-node03 bluetooth one cluster1 (domain: kubebt-03.cl1.kubedge)
+192.168.113.1   router.kubebt-03.cl1.kubedge
+
+# DCP Server 114 on kube-node04 bluetooth one cluster1 (domain: kubebt-04.cl1.kubedge)
+192.168.114.1   router.kubebt-04.cl1.kubedge
+
+# ########################################
+# Cluster 2 LTE and 5G Simulation
+# ########################################
+
+# DCP Server 21 on home-pi wifi on cluster2 (domain: kubewifi-01.cl2.kubedge)
+# 192.168.21.1    router.kubewifi-01.cl2.kubedge
+
+# DCP Server 22 on nas-pi wifi on cluster2 (domain: kubewifi-02.cl2.kubedge)
+192.168.22.1    router.kubewifi-02.cl2.kubedge
+
+# DCP Server 120 on master-pi bluetooth on cluster2 (domain: kubebt-00.cl2.kubedge)
+# 192.168.120.1   router.kubebt-00.cl2.kubedge
+
+# DCP Server 121 on home-pi bluetooth on cluster2 (domain: kubebt-01.cl2.kubedge)
+192.168.121.1   router.kubebt-01.cl2.kubedge
+
+# DCP Server 122 on nas-pi bluetooth on cluster2 (domain: kubebt-02.cl2.kubedge)
+192.168.122.1   router.kubebt-02.cl2.kubedge
+
+# ########################################
+# Cluster 3 LTE and 5G Simulation
+# ########################################
+
+# DCP Server 31 on kube-node01 wifi on cluster3 (domain: kubewifi-01.cl3.kubedge)
+192.168.31.1    router.kubewifi-01.cl3.kubedge
+
+# DCP Server 32 on kube-node02 wifi on cluster3 (domain: kubewifi-02.cl3.kubedge)
+192.168.32.1    router.kubewifi-02.cl3.kubedge
+
+# DCP Server 131 on kube-node01 bluetooth on cluster3 (domain: kubebt-01.cl3.kubedge)
+192.168.131.1   router.kubebt-01.cl3.kubedge
+
+# DCP Server 132 on kube-node02 bluetooth on cluster3 (domain: kubebt-02.cl3.kubedge)
+192.168.132.1   router.kubebt-02.cl3.kubedge
+
+# ########################################
+# Cluster 4 LTE and 5G Simulation
+# ########################################
+
+# DCP Server 41 on kube-node01 wifi on cluster4 (domain: kubewifi-01.cl4.kubedge)
+192.168.41.1    router.kubewifi-01.cl4.kubedge
+
+# DCP Server 42 on kube-node02 wifi on cluster4 (domain: kubewifi-02.cl4.kubedge)
+192.168.42.1    router.kubewifi-02.cl4.kubedge
+
+# DCP Server 141 on kube-node01 bluetooth on cluster4 (domain: kubebt-01.cl4.kubedge)
+192.168.141.1   router.kubebt-01.cl4.kubedge
+
+# DCP Server 142 on kube-node02 bluetooth on cluster4 (domain: kubebt-02.cl4.kubedge)
+192.168.142.1   router.kubebt-02.cl4.kubedge
+
+# ########################################
+# Cluster 5 LTE and 5G Simulation
+# ########################################
+
+# DCP Server 50 on kubemaster-pi wifi on cluster5 (domain: kubewifi-00.cl5.kubedge)
+192.168.50.1    router.kubewifi-00.cl5.kubedge
+
+# DCP Server 150 on kubemaster-pi bluetooth on cluster5 (domain: kubebt-00.cl5.kubedge)
+192.168.150.1   router.kubebt-00.cl5.kubedge
