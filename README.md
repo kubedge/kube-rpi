@@ -1,16 +1,15 @@
 # kube-rpi
 Kubernetes Utilties for Raspberry PI
 
-## Ansible Playbooks to manage cluster 1
+## config
 
-TBD
+The folder contains ansible playbook, backup of key config files
 
-## Ansible Playbooks to manage cluster 2
+## kube-deployment
 
-TBD
+This folder contains utilty Kubernetes yaml file matching the constraint of the PI3.
 
-## Ansible Playbooks to manage cluster 3
+## images
 
-TBD
-
+This folder contains mainly Dockerfile necessary to rebuild images for the PI3.
 
