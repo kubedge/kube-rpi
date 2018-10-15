@@ -7,6 +7,11 @@
   - /etc/network/interfaces
   - /var/lib/kubelet/config.yaml
   - /etc/dhcp/dhcpd.conf
+  - /etc/dhcpcd.conf
+  - /etc/wpa_supplicant/wpa_supplicant.conf
+  - /etc/default/isc-dhcp-server
+  - /etc/hostapd/hostapd.conf
+  - /etc/iptables.ipv4.nat
 
 - name: find interfaces files
   find:

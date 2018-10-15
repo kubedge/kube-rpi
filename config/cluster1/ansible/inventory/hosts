@@ -4,10 +4,10 @@ masters
 workers
 
 [masters]
-kubemaster-pi.kubepi
+kubemaster-pi.cluster1.kubedge.cloud
 
 [workers]
-kube-node01.kubepi
-kube-node02.kubepi
-kube-node03.kubepi
-kube-node04.kubepi
+kube-node01.cluster1.kubedge.cloud
+kube-node02.cluster1.kubedge.cloud
+kube-node03.cluster1.kubedge.cloud
+kube-node04.cluster1.kubedge.cloud
