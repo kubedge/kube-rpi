@@ -4,11 +4,17 @@ masters
 workers
 
 [masters]
-master-pi.kubedge.cloud
+#master-pi.cluster2.kubedge.cloud
+master-pi.home
+#master-pi.kubedge.cloud
 
 [workers]
-nas-pi.kubedge.cloud
-home-pi.kubedge.cloud
+#home-pi.cluster2.kubedge.cloud
+home-pi.home
+#home-pi.kubedge.cloud
+#nas-pi.cluster2.kubedge.cloud
+nas-pi.home
+#nas-pi.kubedge.cloud
 
-[cluster2]
+[cluster1]
 kubemaster-pi.kubedge.cloud
