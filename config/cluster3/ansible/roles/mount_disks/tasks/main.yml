@@ -1,0 +1,29 @@
+- name: Creates directory
+  file: path=/mnt/disks/{{ item }} state=directory
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  with_items:
+  - vol1
+  - vol2
+  - vol3
+  - vol4
+
+- name: Transferring the mount files
+  template: src=../templates/{{ item }} dest=/etc/systemd/system/{{ item }}
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  with_items:
+  - mnt-disks-vol1.mount
+  - mnt-disks-vol2.mount
+  - mnt-disks-vol3.mount
+  - mnt-disks-vol4.mount
+
+- name: Enable the mount
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  with_items:
+  - mnt-disks-vol1.mount
+  - mnt-disks-vol2.mount
+  - mnt-disks-vol3.mount
+  - mnt-disks-vol4.mount

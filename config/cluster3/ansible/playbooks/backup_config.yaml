@@ -1,0 +1,16 @@
+---
+  - name: Setup the disks
+    hosts: picluster
+    vars_files:
+      - ../group_vars/all
+    roles:
+      - { role: ../roles/backup_config }
+
+  - name: Setup the disks
+    hosts: masters
+    vars_files:
+      - ../group_vars/all
+    roles:
+      - { role: ../roles/remove_sensitive }
+
+

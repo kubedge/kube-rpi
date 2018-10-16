@@ -1,0 +1,19 @@
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: home-pi-vol01-pod
+spec:
+  volumes:
+    - name: home-pi-pv-storage
+      persistentVolumeClaim:
+       claimName: home-pi-vol01-claim
+  containers:
+    - name: home-pi-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: home-pi-pv-storage

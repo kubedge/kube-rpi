@@ -1,0 +1,5 @@
+---
+backup_dir: /home/pirate/ssh/kube-rpi/config/cluster3
+kubesimbase_dir: /home/pirate/ssh/kubesim_base/
+kubedge_dir: /etc/kubedge
+kubedge_script_dir: /etc/kubedge/scripts
