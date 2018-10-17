@@ -12,6 +12,8 @@
   - /etc/default/isc-dhcp-server
   - /etc/hostapd/hostapd.conf
   - /etc/iptables.ipv4.nat
+  - /etc/default/hostapd
+  - /etc/sysctl.conf
 
 - name: find interfaces files
   find:
