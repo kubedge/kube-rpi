@@ -8,6 +8,7 @@
   - /var/lib/kubelet/config.yaml
   - /etc/dhcp/dhcpd.conf
   - /etc/dhcpcd.conf
+  - /etc/resolv.conf
   - /etc/wpa_supplicant/wpa_supplicant.conf
   - /etc/default/isc-dhcp-server
   - /etc/hostapd/hostapd.conf

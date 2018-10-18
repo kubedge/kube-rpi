@@ -19,15 +19,15 @@ ff02::3 ip6-allhosts
 # DHCP Server 1 on new router (domain: kubedge.cloud)
 192.168.1.1  newrouter.kubedge.cloud newrouter
 192.168.1.13 myrouter.kubedge.cloud myrouter
-192.168.1.95 master-pi.kubedge.cloud master-pi
-192.168.1.92 home-pi.kubedge.cloud home-pi
-192.168.1.93 nas-pi.kubedge.cloud nas-pi
+192.168.1.95 master-pi.kubedge.cloud
+192.168.1.92 home-pi.kubedge.cloud
+192.168.1.93 nas-pi.kubedge.cloud
 192.168.1.94 kubemaster-pi.kubedge.cloud kubemaster-pi
 
 # DHCP Server 2 on master-pi (domain: cluster2.kubedge.cloud)
-192.168.2.1   master-pi.cluster2.kubedge.cloud
-192.168.2.100 home-pi.cluster2.kubedge.cloud
-192.168.2.101 nas-pi.cluster2.kubedge.cloud
+192.168.2.1   master-pi.cluster2.kubedge.cloud master-pi
+192.168.2.100 home-pi.cluster2.kubedge.cloud home-pi
+192.168.2.101 nas-pi.cluster2.kubedge.cloud nas-pi
 
 # DHCP Server 3 on old router (domain: home)
 192.168.3.1   myrouter.home
@@ -68,9 +68,7 @@ ff02::3 ip6-allhosts
 # ########################################
 
 # DCP Server 21 on home-pi wifi on cluster2 (domain: kubewifi-01.cl2.kubedge)
-# POC was done using 10.
-# 192.168.21.1    router.kubewifi-01.cl2.kubedge
-192.168.10.1    router.kubewifi-01.cl2.kubedge
+192.168.21.1    router.kubewifi-01.cl2.kubedge
 
 # DCP Server 22 on nas-pi wifi on cluster2 (domain: kubewifi-02.cl2.kubedge)
 192.168.22.1    router.kubewifi-02.cl2.kubedge
