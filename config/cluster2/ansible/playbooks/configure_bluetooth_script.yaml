@@ -1,7 +1,12 @@
 ---
 - hosts: picluster
+  vars_files:
+    - ../group_vars/all
   tasks:
   - name: update apt
     become: true
     apt:
        update_cache: yes
+
+  roles:
+     - { role: ../roles/config_bluetooth_script }

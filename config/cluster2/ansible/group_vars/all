@@ -1,2 +1,6 @@
 ---
 backup_dir: /home/pirate/proj/kubedge/kube-rpi/config/cluster2/hypriotos/
+kubesimbase_dir: /home/pirate/proj/kubedge/kubesim_base/
+kubedge_dir: /etc/kubedge
+kubedge_script_dir: /etc/kubedge/scripts
+
