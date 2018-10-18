@@ -11,7 +11,7 @@
 
 allow-hotplug wlan0
 iface wlan0 inet manual
-   adddress 192.168.10.1
+   adddress 192.168.21.1
    netmask 255.255.255.0
 
 up iptables-restore < /etc/iptables.ipv4.nat

@@ -4,16 +4,16 @@ masters
 workers
 
 [masters]
-#master-pi.cluster2.kubedge.cloud
-master-pi.home
+master-pi.cluster2.kubedge.cloud
+#master-pi.home
 #master-pi.kubedge.cloud
 
 [workers]
-#home-pi.cluster2.kubedge.cloud
-home-pi.home
+home-pi.cluster2.kubedge.cloud
+nas-pi.cluster2.kubedge.cloud
+#home-pi.home
+#nas-pi.home
 #home-pi.kubedge.cloud
-#nas-pi.cluster2.kubedge.cloud
-nas-pi.home
 #nas-pi.kubedge.cloud
 
 [cluster1]
