@@ -26,7 +26,7 @@ ff02::3 ip6-allhosts
 
 # DHCP Server 2 on kubemaster-pi (domain: cluster1.kubedge.cloud)
 192.168.2.1   kubemaster-pi.cluster1.kubedge.cloud kubemaster-pi
-192.168.2.101 kube-node1uster1.kubedge.cloud kube-node01
+192.168.2.101 kube-node01.cluster1.kubedge.cloud kube-node01
 192.168.2.102 kube-node02.cluster1.kubedge.cloud kube-node02
 192.168.2.103 kube-node03.cluster1.kubedge.cloud kube-node03
 192.168.2.104 kube-node04.cluster1.kubedge.cloud kube-node04
