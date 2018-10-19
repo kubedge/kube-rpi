@@ -3,6 +3,7 @@
   fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item }} src={{ item }} flat=yes
   with_items:
   - /etc/hosts
+  - /etc/networks
   - /etc/hostname
   - /etc/network/interfaces
   - /var/lib/kubelet/config.yaml
@@ -58,5 +59,16 @@
   become: yes
   fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
   with_items: "{{ kubelet_files.files }}"
+
+- name: find mount files
+  find:
+    paths: /etc/systemd/system/
+    patterns: '*.mount'
+  register: mount_files
+
+- name: fetch mount files
+  become: yes
+  fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
+  with_items: "{{ mount_files.files }}"
 
 
