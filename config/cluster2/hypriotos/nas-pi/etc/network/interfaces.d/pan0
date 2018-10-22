@@ -1,0 +1,9 @@
+auto pan0
+iface pan0 inet manual
+	address 192.168.122.1
+	network 255.255.255.0
+	bridge_ports none
+	bridge_fd 5
+	bridge_stp off
+
+# up iptables-restore < /etc/iptables.ipv4.nat

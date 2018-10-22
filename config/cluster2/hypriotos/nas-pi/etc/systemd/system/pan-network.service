@@ -1,0 +1,15 @@
+[Unit]
+Description=pan-network service
+After=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/pan-network.sh 
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=propanel
+User=root
+Group=root
+
+[Install]
+WantedBy=custom.target

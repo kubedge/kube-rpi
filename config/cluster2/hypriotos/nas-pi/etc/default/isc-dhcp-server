@@ -10,9 +10,9 @@
 
 # Additional options to start dhcpd with.
 #	Don't use options -cf or -pf here; use DHCPD_CONF/ DHCPD_PID instead
-#OPTIONS=""
+OPTIONS="-4"
 
 # On what interfaces should the DHCP server (dhcpd) serve DHCP requests?
 #	Separate multiple interfaces with spaces, e.g. "eth0 eth1".
-INTERFACESv4=""
+INTERFACESv4="pan0"
 INTERFACESv6=""
