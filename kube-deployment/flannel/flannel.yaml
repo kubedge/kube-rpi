@@ -82,7 +82,7 @@ data:
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
-  name: kube-flannel-ds
+  name: kube-flannel-ds-arm
   namespace: kube-system
   labels:
     tier: node
@@ -98,8 +98,7 @@ spec:
       nodeSelector:
         beta.kubernetes.io/arch: arm
       tolerations:
-      - key: node-role.kubernetes.io/master
-        operator: Exists
+      - operator: Exists
         effect: NoSchedule
       serviceAccountName: flannel
       initContainers:
