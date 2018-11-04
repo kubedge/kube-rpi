@@ -367,7 +367,7 @@ nodeExporter:
   ## node-exporter container image
   ##
   image:
-    repository: kubedge2/node-exporter-arm32v7
+    repository: kubedge2/node_exporter-arm32v7
     tag: v0.16.0
     pullPolicy: IfNotPresent
 
