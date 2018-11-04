@@ -158,7 +158,7 @@ alertmanager:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClass: "local-storage"
 
     ## Subdirectory of alertmanager data Persistent Volume to mount
     ## Useful if the volume's root directory is not empty
@@ -367,7 +367,7 @@ nodeExporter:
   ## node-exporter container image
   ##
   image:
-    repository: kubedge2/node-exporter-arm32v7
+    repository: kubedge2/node_exporter-arm32v7
     tag: v0.16.0
     pullPolicy: IfNotPresent
 
@@ -632,7 +632,7 @@ server:
 
     ## Prometheus server data Persistent Volume size
     ##
-    size: 8Gi
+    size: 2Gi
 
     ## Prometheus server data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
@@ -641,7 +641,7 @@ server:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClass: "local-storage"
 
     ## Subdirectory of Prometheus server data Persistent Volume to mount
     ## Useful if the volume's root directory is not empty
