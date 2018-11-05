@@ -23,7 +23,7 @@ livenessProbe:
   failureThreshold: 10
 
 image:
-  repository: grafana/grafana
+  repository: kubedge2/grafana-arm32v7
   tag: 5.3.2
   pullPolicy: IfNotPresent
 
