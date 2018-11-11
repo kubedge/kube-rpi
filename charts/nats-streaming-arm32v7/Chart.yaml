@@ -1,0 +1,4 @@
+name: nats-streaming-arm32v7
+home: https://github.com/canhnt/k8s-nats-streaming
+version: v0.3.0
+description: Fault Tolerance NATS Streaming on Kubernetes (>=v1.8.0)
