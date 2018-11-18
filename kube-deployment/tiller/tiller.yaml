@@ -23,7 +23,7 @@ spec:
           value: kube-system
         - name: TILLER_HISTORY_MAX
           value: "0"
-        image: jbrette/tiller-arm32v7:3.0
+        image: kubedge2/tiller-arm32v7:2.11
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
