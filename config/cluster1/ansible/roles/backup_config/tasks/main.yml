@@ -3,17 +3,22 @@
   fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item }} src={{ item }} flat=yes
   with_items:
   - /etc/hosts
+  - /etc/networks
   - /etc/hostname
   - /etc/network/interfaces
   - /var/lib/kubelet/config.yaml
   - /etc/dhcp/dhcpd.conf
   - /etc/dhcpcd.conf
+  - /etc/resolv.conf
   - /etc/wpa_supplicant/wpa_supplicant.conf
   - /etc/default/isc-dhcp-server
   - /etc/hostapd/hostapd.conf
   - /etc/iptables.ipv4.nat
   - /etc/default/hostapd
   - /etc/sysctl.conf
+  - /boot/cmdline.txt
+  - /boot/config.txt
+  - /boot/os-release
 
 - name: find interfaces files
   find:
@@ -59,5 +64,16 @@
   become: yes
   fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
   with_items: "{{ kubelet_files.files }}"
+
+- name: find mount files
+  find:
+    paths: /etc/systemd/system/
+    patterns: '*.mount'
+  register: mount_files
+
+- name: fetch mount files
+  become: yes
+  fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
+  with_items: "{{ mount_files.files }}"
 
 
