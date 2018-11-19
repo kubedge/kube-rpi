@@ -14,6 +14,11 @@
   - /etc/default/isc-dhcp-server
   - /etc/hostapd/hostapd.conf
   - /etc/iptables.ipv4.nat
+  - /etc/default/hostapd
+  - /etc/sysctl.conf
+  - /boot/cmdline.txt
+  - /boot/config.txt
+  - /boot/os-release
   - /etc/systemd/system/pan-network.service
   - /etc/systemd/system/bt-pan.service
   - /etc/systemd/system/blueagent5.service

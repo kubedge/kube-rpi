@@ -1,0 +1,9 @@
+auto pan0
+iface pan0 inet static
+	address 192.168.120.1
+	network 255.255.255.0
+  	bridge_stp off
+  	bridge_ports wlan0
+	# bridge_ports none
+	# bridge_fd 5
+	# bridge_stp no

@@ -1,6 +1,6 @@
 ---
   - name: Setup the disks
-    hosts: picluster:!masters 
+    hosts: picluster
     become: yes
     vars_files:
       - ../group_vars/all

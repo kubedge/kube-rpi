@@ -1,0 +1,9 @@
+
+# enable UART console on GPIO pins
+enable_uart=1
+hdmi_force_hotplug=1
+
+# setting for maximum memory, gpu_mem to minimum 16M, camera off
+start_x=0
+gpu_mem=16
+
