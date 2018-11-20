@@ -10,12 +10,14 @@
   - /etc/dhcp/dhcpd.conf
   - /etc/dhcpcd.conf
   - /etc/resolv.conf
+  - /etc/resolv.conf.tail
   - /etc/wpa_supplicant/wpa_supplicant.conf
   - /etc/default/isc-dhcp-server
   - /etc/hostapd/hostapd.conf
   - /etc/iptables.ipv4.nat
   - /etc/default/hostapd
   - /etc/sysctl.conf
+  - /etc/apt/sources.list
   - /boot/cmdline.txt
   - /boot/config.txt
   - /boot/os-release
@@ -36,6 +38,16 @@
   become: yes
   fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
   with_items: "{{ interface_files.files }}"
+
+- name: find apt sources.list files
+  find:
+    paths: /etc/apt/sources.list.d/
+  register: apt_files
+
+- name: fetch apt sources.list files
+  become: yes
+  fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item.path }} src={{ item.path }} flat=yes
+  with_items: "{{ apt_files.files }}"
 
 - name: find kubernetes files
   find:
