@@ -1,0 +1,11 @@
+---
+[picluster:children]
+masters
+workers
+
+[masters]
+kubemaster-pi.cluster6.kubedge.cloud
+
+[workers]
+kube-node01.cluster6.kubedge.cloud
+kube-node02.cluster6.kubedge.cloud

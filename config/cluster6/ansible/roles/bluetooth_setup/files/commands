@@ -1,0 +1,27 @@
+auto pan0
+iface pan0 inet dhcp
+  bridge_stp off
+  bridge_ports eth0
+I rebooted at about this time to make sure all was as it would be normally.
+
+sudo reboot
+Log back in and we issue
+
+modprobe bnep
+hciconfig hci0 lm master,accept
+ip link set pan0 up
+If you don't want pin prompt, don't do this next step. To ensure we get a PIN prompt, issue this...
+
+hciconfig hci0 sspmode 0
+Start PAN using the special magic in the bt-pan script. It doesn't return, so add an ampersand at the end.
+
+bt-pan  server pan0 &
+Start the bluetooth security agent with wonderful ease and confidence. Optionally set a pin (it defaults to 0000).
+
+blueagent5 --pin 4321 &
+Okay, one last thing. Forward the network. This will only work if there is no fancy authentication at the router/dhcp, if there is, you may need to look further to solve this issue.
+
+sysctl -w net.ipv4.ip_forward=1
+
+iptables -A INPUT -i pan0 -j ACCEPT
+iptables -A FORWARD -i pan0 -j ACCEPT

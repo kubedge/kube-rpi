@@ -1,0 +1,13 @@
+PRETTY_NAME="Raspbian GNU/Linux 9 (stretch)"
+NAME="Raspbian GNU/Linux"
+VERSION_ID="9"
+VERSION="9 (stretch)"
+ID=raspbian
+ID_LIKE=debian
+HOME_URL="http://www.raspbian.org/"
+SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
+BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
+HYPRIOT_OS="HypriotOS/armhf"
+HYPRIOT_OS_VERSION="v2.0.1"
+HYPRIOT_DEVICE="Raspberry Pi"
+HYPRIOT_IMAGE_VERSION="v1.9.0"

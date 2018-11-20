@@ -1,0 +1,42 @@
+# Your system has configured 'manage_etc_hosts' as True.
+# As a result, if you wish for changes to this file to persist
+# then you will need to either
+# a.) make changes to the master file in /etc/cloud/templates/hosts.tmpl
+# b.) change or remove the value of 'manage_etc_hosts' in
+#     /etc/cloud/cloud.cfg or cloud-config from user-data
+#
+127.0.1.1 kubemaster-pi.localdomain kubemaster-pi
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+# DHCP Server 6 on new router (domain: myhomelan)
+192.168.1.1  myhomerouter.myhomelan myhomerouter
+192.168.1.23 kubemaster-pi.myhomelan kubemaster-pi
+
+# DHCP Server 2 on kubemaster-pi (domain: cluster6.kubedge.cloud)
+192.168.2.1   kubemaster-pi.cluster6.kubedge.cloud kubemaster-pi
+192.168.2.103 kube-node01.cluster6.kubedge.cloud kube-node01
+192.168.2.104 kube-node02.cluster6.kubedge.cloud kube-node02
+
+# ########################################
+# Cluster 6 LTE and 5G Simulation
+# ########################################
+
+# DCP Server 031 on kube-node01 wifi on cluster3
+192.168.61.1    router.ran-5g-061.cluster6.kubedge.cloud
+
+# DCP Server 032 on kube-node02 wifi one cluster3
+192.168.62.1    router.ran-5g-062.cluster6.kubedge.cloud
+
+# DCP Server 131 on kube-node01 bluetooth on cluster3
+192.168.161.1   router.ran-lte-161.cluster6.kubedge.cloud
+
+# DCP Server 132 on kube-node02 bluetooth one cluster3
+192.168.162.1   router.ran-lte-162.cluster6.kubedge.cloud

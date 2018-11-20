@@ -1,0 +1,87 @@
+- name: find kubernetes files
+  find:
+    paths: "{{ backup_dir }}"
+    recurse: yes
+    patterns: '*.conf,*.yaml'
+  register: kubernetes_files
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 00
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'certificate-authority-data: [A-Za-z0-9=]*'
+      replace: 'certificate-authority-data: xxx_certificate_authority_data_xxx'
+  with_items: "{{ kubernetes_files.files }}"
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 01
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'client-certificate-data: [A-Za-z0-9=]*'
+      replace: 'client-certificate-data: xxx_client_certificate_data_xxx'
+  with_items: "{{ kubernetes_files.files }}"
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 02
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'client-key-data: [A-Za-z0-9=]*'
+      replace: 'client-key-data: xxx_client_key_data_xxx'
+  with_items: "{{ kubernetes_files.files }}"
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 03
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'token: [A-Za-z0-9\.]*'
+      replace: 'token: xxx_token_xxx'
+  with_items: "{{ kubernetes_files.files }}"
+  delegate_to: 127.0.0.1
+
+- name: find interfaces files
+  find:
+    paths: "{{ backup_dir }}"
+    recurse: yes
+    patterns: 'wlan0'
+  register: interfaces_files
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 10 
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'wpa-ssid [A-Za-z0-9]*'
+      replace: 'wpa-ssid xxx_wpa_ssid_xxx'
+  with_items: "{{ interfaces_files.files }}"
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 11
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'wpa-psk [A-Za-z0-9]*'
+      replace: 'wpa-psk xxx_wpa_psk_xxx'
+  with_items: "{{ interfaces_files.files }}"
+  delegate_to: 127.0.0.1
+
+- name: find interfaces files
+  find:
+    paths: "{{ backup_dir }}"
+    recurse: yes
+    patterns: 'wpa_supplicant.conf'
+  register: wpasupplicant_files
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 10 
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'password="[A-Za-z0-9]*"'
+      replace: 'password="xxx_password_xxx"'
+  with_items: "{{ wpasupplicant_files.files }}"
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 11
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'psk=[A-Za-z0-9]*'
+      replace: 'psk=xxx_psk_xxx'
+  with_items: "{{ wpasupplicant_files.files }}"
+  delegate_to: 127.0.0.1

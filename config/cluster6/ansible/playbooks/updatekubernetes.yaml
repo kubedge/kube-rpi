@@ -1,0 +1,13 @@
+---
+- hosts: picluster
+  tasks:
+  - name: Install list of packages
+    become: true
+    apt: 
+        name: "{{item}}"
+        state: latest
+        update_cache: yes
+    with_items:
+       - kubelet
+       - kubectl
+       - kubeadm
