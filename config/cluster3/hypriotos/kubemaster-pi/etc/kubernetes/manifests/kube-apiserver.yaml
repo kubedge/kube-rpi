@@ -17,7 +17,6 @@ spec:
     - --advertise-address=192.168.2.1
     - --allow-privileged=true
     - --client-ca-file=/etc/kubernetes/pki/ca.crt
-    - --disable-admission-plugins=PersistentVolumeLabel
     - --enable-admission-plugins=NodeRestriction
     - --enable-bootstrap-token-auth=true
     - --etcd-cafile=/etc/kubernetes/pki/etcd/ca.crt
@@ -40,7 +39,7 @@ spec:
     - --service-cluster-ip-range=10.96.0.0/12
     - --tls-cert-file=/etc/kubernetes/pki/apiserver.crt
     - --tls-private-key-file=/etc/kubernetes/pki/apiserver.key
-    image: k8s.gcr.io/kube-apiserver-arm:v1.11.2
+    image: k8s.gcr.io/kube-apiserver:v1.12.1
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8
@@ -75,14 +74,6 @@ spec:
   priorityClassName: system-cluster-critical
   volumes:
   - hostPath:
-      path: /etc/kubernetes/pki
-      type: DirectoryOrCreate
-    name: k8s-certs
-  - hostPath:
-      path: /etc/ssl/certs
-      type: DirectoryOrCreate
-    name: ca-certs
-  - hostPath:
       path: /usr/share/ca-certificates
       type: DirectoryOrCreate
     name: usr-share-ca-certificates
@@ -94,4 +85,12 @@ spec:
       path: /etc/ca-certificates
       type: DirectoryOrCreate
     name: etc-ca-certificates
+  - hostPath:
+      path: /etc/kubernetes/pki
+      type: DirectoryOrCreate
+    name: k8s-certs
+  - hostPath:
+      path: /etc/ssl/certs
+      type: DirectoryOrCreate
+    name: ca-certs
 status: {}

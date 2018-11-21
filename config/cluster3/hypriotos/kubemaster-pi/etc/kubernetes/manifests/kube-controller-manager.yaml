@@ -13,8 +13,11 @@ spec:
   containers:
   - command:
     - kube-controller-manager
-    - --address=127.0.0.1
+    - --address=0.0.0.0
     - --allocate-node-cidrs=true
+    - --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --client-ca-file=/etc/kubernetes/pki/ca.crt
     - --cluster-cidr=10.244.0.0/16
     - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt
     - --cluster-signing-key-file=/etc/kubernetes/pki/ca.key
@@ -22,10 +25,11 @@ spec:
     - --kubeconfig=/etc/kubernetes/controller-manager.conf
     - --leader-elect=true
     - --node-cidr-mask-size=24
+    - --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt
     - --root-ca-file=/etc/kubernetes/pki/ca.crt
     - --service-account-private-key-file=/etc/kubernetes/pki/sa.key
     - --use-service-account-credentials=true
-    image: k8s.gcr.io/kube-controller-manager-arm:v1.11.2
+    image: k8s.gcr.io/kube-controller-manager:v1.12.1
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8
@@ -41,6 +45,9 @@ spec:
       requests:
         cpu: 200m
     volumeMounts:
+    - mountPath: /usr/local/share/ca-certificates
+      name: usr-local-share-ca-certificates
+      readOnly: true
     - mountPath: /etc/ca-certificates
       name: etc-ca-certificates
       readOnly: true
@@ -58,12 +65,17 @@ spec:
     - mountPath: /usr/share/ca-certificates
       name: usr-share-ca-certificates
       readOnly: true
-    - mountPath: /usr/local/share/ca-certificates
-      name: usr-local-share-ca-certificates
-      readOnly: true
   hostNetwork: true
   priorityClassName: system-cluster-critical
   volumes:
+  - hostPath:
+      path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+      type: DirectoryOrCreate
+    name: flexvolume-dir
+  - hostPath:
+      path: /usr/share/ca-certificates
+      type: DirectoryOrCreate
+    name: usr-share-ca-certificates
   - hostPath:
       path: /usr/local/share/ca-certificates
       type: DirectoryOrCreate
@@ -84,12 +96,4 @@ spec:
       path: /etc/kubernetes/controller-manager.conf
       type: FileOrCreate
     name: kubeconfig
-  - hostPath:
-      path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
-      type: DirectoryOrCreate
-    name: flexvolume-dir
-  - hostPath:
-      path: /usr/share/ca-certificates
-      type: DirectoryOrCreate
-    name: usr-share-ca-certificates
 status: {}

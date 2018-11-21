@@ -13,10 +13,10 @@ spec:
   containers:
   - command:
     - kube-scheduler
-    - --address=127.0.0.1
+    - --address=0.0.0.0
     - --kubeconfig=/etc/kubernetes/scheduler.conf
     - --leader-elect=true
-    image: k8s.gcr.io/kube-scheduler-arm:v1.11.2
+    image: k8s.gcr.io/kube-scheduler:v1.12.1
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8
