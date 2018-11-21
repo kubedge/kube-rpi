@@ -61,3 +61,27 @@
       replace: 'wpa-psk xxx_wpa_psk_xxx'
   with_items: "{{ interfaces_files.files }}"
   delegate_to: 127.0.0.1
+
+- name: find interfaces files
+  find:
+    paths: "{{ backup_dir }}"
+    recurse: yes
+    patterns: 'wpa_supplicant.conf'
+  register: wpasupplicant_files
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 10 
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'password="[A-Za-z0-9]*"'
+      replace: 'password="xxx_password_xxx"'
+  with_items: "{{ wpasupplicant_files.files }}"
+  delegate_to: 127.0.0.1
+
+- name: remove credentials 11
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'psk=[A-Za-z0-9]*'
+      replace: 'psk=xxx_psk_xxx'
+  with_items: "{{ wpasupplicant_files.files }}"
+  delegate_to: 127.0.0.1
