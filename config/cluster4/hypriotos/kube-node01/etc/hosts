@@ -5,7 +5,7 @@
 # b.) change or remove the value of 'manage_etc_hosts' in
 #     /etc/cloud/cloud.cfg or cloud-config from user-data
 #
-127.0.1.1 kubenode-02 black-pearl
+127.0.1.1 kube-node01.localdomain kube-node01
 127.0.0.1 localhost
 
 # The following lines are desirable for IPv6 capable hosts
@@ -16,3 +16,26 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ff02::3 ip6-allhosts
 
+192.168.1.1   mainrouter.pigmami mainrouter
+
+# DHCP Server 3 on kubemaster-pi (domain: cluster4.kubedge.cloud)
+192.168.3.1   linksys.cluster4.kubedge.cloud linksys
+192.168.3.100 kubemaster-pi.cluster4.kubedge.cloud kubemaster-pi
+192.168.3.101 kube-node01.cluster4.kubedge.cloud kube-node01
+192.168.3.102 kube-node02.cluster4.kubedge.cloud kube-node02
+
+# ########################################
+# Cluster 4 LTE and 5G Simulation
+# ########################################
+
+# DCP Server 041 on kube-node01 wifi on cluster3
+192.168.41.1    router.ran-5g-041.cluster3.kubedge.cloud
+
+# DCP Server 042 on kube-node02 wifi one cluster3
+192.168.42.1    router.ran-5g-042.cluster3.kubedge.cloud
+
+# DCP Server 141 on kube-node01 bluetooth on cluster3
+192.168.141.1   router.ran-lte-141.cluster3.kubedge.cloud
+
+# DCP Server 142 on kube-node02 bluetooth one cluster3
+192.168.142.1   router.ran-lte-142.cluster3.kubedge.cloud
