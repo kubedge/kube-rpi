@@ -13,15 +13,15 @@ spec:
   containers:
   - command:
     - etcd
-    - --advertise-client-urls=https://127.0.0.1:2379
+    - --advertise-client-urls=https://192.168.2.1:2379
     - --cert-file=/etc/kubernetes/pki/etcd/server.crt
     - --client-cert-auth=true
     - --data-dir=/var/lib/etcd
-    - --initial-advertise-peer-urls=https://127.0.0.1:2380
-    - --initial-cluster=master-pi=https://127.0.0.1:2380
+    - --initial-advertise-peer-urls=https://192.168.2.1:2380
+    - --initial-cluster=master-pi=https://192.168.2.1:2380
     - --key-file=/etc/kubernetes/pki/etcd/server.key
-    - --listen-client-urls=https://127.0.0.1:2379
-    - --listen-peer-urls=https://127.0.0.1:2380
+    - --listen-client-urls=https://127.0.0.1:2379,https://192.168.2.1:2379
+    - --listen-peer-urls=https://192.168.2.1:2380
     - --name=master-pi
     - --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
     - --peer-client-cert-auth=true
@@ -53,11 +53,11 @@ spec:
   priorityClassName: system-cluster-critical
   volumes:
   - hostPath:
-      path: /var/lib/etcd
-      type: DirectoryOrCreate
-    name: etcd-data
-  - hostPath:
       path: /etc/kubernetes/pki/etcd
       type: DirectoryOrCreate
     name: etcd-certs
+  - hostPath:
+      path: /var/lib/etcd
+      type: DirectoryOrCreate
+    name: etcd-data
 status: {}
