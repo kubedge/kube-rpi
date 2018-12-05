@@ -29,7 +29,7 @@ spec:
     - --root-ca-file=/etc/kubernetes/pki/ca.crt
     - --service-account-private-key-file=/etc/kubernetes/pki/sa.key
     - --use-service-account-credentials=true
-    image: k8s.gcr.io/kube-controller-manager:v1.12.1
+    image: k8s.gcr.io/kube-controller-manager:v1.13.0
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8
@@ -45,25 +45,25 @@ spec:
       requests:
         cpu: 200m
     volumeMounts:
-    - mountPath: /etc/kubernetes/pki
-      name: k8s-certs
-      readOnly: true
     - mountPath: /etc/ssl/certs
       name: ca-certs
+      readOnly: true
+    - mountPath: /etc/ca-certificates
+      name: etc-ca-certificates
+      readOnly: true
+    - mountPath: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+      name: flexvolume-dir
+    - mountPath: /etc/kubernetes/pki
+      name: k8s-certs
       readOnly: true
     - mountPath: /etc/kubernetes/controller-manager.conf
       name: kubeconfig
       readOnly: true
-    - mountPath: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
-      name: flexvolume-dir
-    - mountPath: /usr/share/ca-certificates
-      name: usr-share-ca-certificates
-      readOnly: true
     - mountPath: /usr/local/share/ca-certificates
       name: usr-local-share-ca-certificates
       readOnly: true
-    - mountPath: /etc/ca-certificates
-      name: etc-ca-certificates
+    - mountPath: /usr/share/ca-certificates
+      name: usr-share-ca-certificates
       readOnly: true
   hostNetwork: true
   priorityClassName: system-cluster-critical
@@ -73,27 +73,27 @@ spec:
       type: DirectoryOrCreate
     name: ca-certs
   - hostPath:
-      path: /etc/kubernetes/controller-manager.conf
-      type: FileOrCreate
-    name: kubeconfig
+      path: /etc/ca-certificates
+      type: DirectoryOrCreate
+    name: etc-ca-certificates
   - hostPath:
       path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
       type: DirectoryOrCreate
     name: flexvolume-dir
   - hostPath:
-      path: /usr/share/ca-certificates
+      path: /etc/kubernetes/pki
       type: DirectoryOrCreate
-    name: usr-share-ca-certificates
+    name: k8s-certs
+  - hostPath:
+      path: /etc/kubernetes/controller-manager.conf
+      type: FileOrCreate
+    name: kubeconfig
   - hostPath:
       path: /usr/local/share/ca-certificates
       type: DirectoryOrCreate
     name: usr-local-share-ca-certificates
   - hostPath:
-      path: /etc/ca-certificates
+      path: /usr/share/ca-certificates
       type: DirectoryOrCreate
-    name: etc-ca-certificates
-  - hostPath:
-      path: /etc/kubernetes/pki
-      type: DirectoryOrCreate
-    name: k8s-certs
+    name: usr-share-ca-certificates
 status: {}
