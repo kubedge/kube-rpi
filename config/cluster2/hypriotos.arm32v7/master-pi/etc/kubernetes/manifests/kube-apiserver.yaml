@@ -1,8 +1,6 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  annotations:
-    scheduler.alpha.kubernetes.io/critical-pod: ""
   creationTimestamp: null
   labels:
     component: kube-apiserver
@@ -13,9 +11,9 @@ spec:
   containers:
   - command:
     - kube-apiserver
-    - --authorization-mode=Node,RBAC
     - --advertise-address=192.168.2.1
     - --allow-privileged=true
+    - --authorization-mode=Node,RBAC
     - --client-ca-file=/etc/kubernetes/pki/ca.crt
     - --enable-admission-plugins=NodeRestriction
     - --enable-bootstrap-token-auth=true
@@ -39,7 +37,7 @@ spec:
     - --service-cluster-ip-range=10.96.0.0/12
     - --tls-cert-file=/etc/kubernetes/pki/apiserver.crt
     - --tls-private-key-file=/etc/kubernetes/pki/apiserver.key
-    image: k8s.gcr.io/kube-apiserver:v1.13.0
+    image: k8s.gcr.io/kube-apiserver:v1.15.3
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8
