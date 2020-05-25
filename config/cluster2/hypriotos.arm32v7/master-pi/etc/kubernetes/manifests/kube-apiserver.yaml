@@ -39,7 +39,7 @@ spec:
     - --service-cluster-ip-range=10.96.0.0/12
     - --tls-cert-file=/etc/kubernetes/pki/apiserver.crt
     - --tls-private-key-file=/etc/kubernetes/pki/apiserver.key
-    image: k8s.gcr.io/kube-apiserver:v1.18.1
+    image: k8s.gcr.io/kube-apiserver:v1.18.3
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8

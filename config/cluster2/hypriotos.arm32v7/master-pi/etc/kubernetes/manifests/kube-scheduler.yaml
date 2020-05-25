@@ -16,7 +16,7 @@ spec:
     - --bind-address=127.0.0.1
     - --kubeconfig=/etc/kubernetes/scheduler.conf
     - --leader-elect=true
-    image: k8s.gcr.io/kube-scheduler:v1.18.1
+    image: k8s.gcr.io/kube-scheduler:v1.18.3
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8
