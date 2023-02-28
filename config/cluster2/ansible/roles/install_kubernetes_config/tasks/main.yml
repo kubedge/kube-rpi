@@ -1,0 +1,52 @@
+- name: Copy kubernetes.conf
+  become: true
+  ansible.builtin.copy:
+      src: templates/kubernetes.conf 
+      dest: /etc/sysctl.d/kubernetes.conf
+      owner: root
+      group: root
+      mode: '0644'
+
+# - name: Add the overlay module
+#  community.general.modprobe:
+#      name: overlay
+#      state: present
+
+#- name: Add the br_netfilter module
+#  community.general.modprobe:
+#      name: br_netfilter
+#      state: present
+
+- name: Copy containerd.conf
+  become: true
+  ansible.builtin.copy:
+      src: templates/containerd.conf 
+      dest: /etc/modules-load.d/containerd.conf
+      owner: root
+      group: root
+      mode: '0644'
+
+- name: create /etc/containerd
+  become: true
+  ansible.builtin.file:
+      dest: /etc/containerd
+      state: directory
+      owner: root
+      group: root
+      mode: '0644'
+
+- name: Copy containerd config.toml
+  become: true
+  ansible.builtin.copy:
+      src: templates/config.toml 
+      dest: /etc/containerd/config.toml
+      owner: root
+      group: root
+      mode: '0644'
+
+- name: Make sure a service unit is running
+  become: true
+  ansible.builtin.systemd:
+      state: restarted
+      name: containerd
+      enabled: true

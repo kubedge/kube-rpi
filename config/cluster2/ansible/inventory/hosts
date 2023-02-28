@@ -1,4 +1,3 @@
----
 [picluster:children]
 masters
 workers

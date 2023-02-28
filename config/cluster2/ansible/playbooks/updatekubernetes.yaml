@@ -8,6 +8,7 @@
         state: latest
         update_cache: yes
     with_items:
+       - containerd.io
        - kubelet
        - kubectl
        - kubeadm

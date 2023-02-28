@@ -1,0 +1,30 @@
+---
+- hosts: picluster
+  tasks:
+  - name: Add docker signing key (new GPG method)
+    become: true
+    ansible.builtin.get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: '0644'
+        force: true
+  - name: Add docker repository
+    become: true
+    ansible.builtin.apt_repository:
+       repo: deb [signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu jammy stable
+       state: present
+       update_cache: yes
+  - name: Add kubernetes signing key (new GPG method)
+    become: true
+    ansible.builtin.get_url:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        dest: /etc/apt/keyrings/kubernetes-archive-keyring.gpg 
+        mode: '0644'
+        force: true
+  - name: Add kubernetes repository
+    become: true
+    ansible.builtin.apt_repository:
+       repo: deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+       state: present
+       update_cache: yes
+

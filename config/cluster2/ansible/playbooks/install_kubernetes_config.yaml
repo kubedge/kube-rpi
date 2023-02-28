@@ -1,0 +1,7 @@
+---
+  - name: Setup the disks
+    hosts: picluster
+    vars_files:
+      - ../group_vars/all
+    roles:
+      - { role: ../roles/install_kubernetes_config }

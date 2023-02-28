@@ -1,6 +1,6 @@
 ---
-backup_dir: /home/pirate/proj/kubedge/kube-rpi/config/cluster2/hypriotos.arm64v8/
-kubesimbase_dir: /home/pirate/proj/kubedge/kubesim_base/
+backup_dir: /home/kubedge/proj/kubedge/kube-rpi/config/cluster2/ubuntu.arm64v8/
+kubesimbase_dir: /home/kubedge/proj/kubedge/kubesim_base/
 kubedge_dir: /etc/kubedge
 kubedge_script_dir: /etc/kubedge/scripts
 
