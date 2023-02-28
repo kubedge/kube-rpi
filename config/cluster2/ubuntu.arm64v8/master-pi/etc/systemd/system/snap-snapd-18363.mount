@@ -1,0 +1,16 @@
+[Unit]
+Description=Mount unit for snapd, revision 18363
+After=snapd.mounts-pre.target
+Before=snapd.mounts.target
+Before=local-fs.target
+
+[Mount]
+What=/var/lib/snapd/snaps/snapd_18363.snap
+Where=/snap/snapd/18363
+Type=squashfs
+Options=nodev,ro,x-gdu.hide,x-gvfs-hide
+LazyUnmount=yes
+
+[Install]
+WantedBy=snapd.mounts.target
+WantedBy=multi-user.target
