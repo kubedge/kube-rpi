@@ -38,6 +38,14 @@
   with_items: "{{ kubernetes_files.files }}"
   delegate_to: 127.0.0.1
 
+- name: remove credentials 15 
+  replace:
+      dest: "{{ item.path }}"
+      regexp: 'password: [A-Za-z0-9]*'
+      replace: 'password: xxx_password_xxx'
+  with_items: "{{ kubernetes_files.files }}"
+  delegate_to: 127.0.0.1
+
 - name: find interfaces files
   find:
     paths: "{{ backup_dir }}"
@@ -70,7 +78,7 @@
   register: wpasupplicant_files
   delegate_to: 127.0.0.1
 
-- name: remove credentials 10 
+- name: remove credentials 12 
   replace:
       dest: "{{ item.path }}"
       regexp: 'password="[A-Za-z0-9]*"'
@@ -78,7 +86,7 @@
   with_items: "{{ wpasupplicant_files.files }}"
   delegate_to: 127.0.0.1
 
-- name: remove credentials 11
+- name: remove credentials 14
   replace:
       dest: "{{ item.path }}"
       regexp: 'psk=[A-Za-z0-9]*'

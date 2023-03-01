@@ -2,6 +2,7 @@
   become: yes
   fetch: dest={{ backup_dir }}/{{ inventory_hostname_short }}{{ item }} src={{ item }} flat=yes
   with_items:
+  - /root/resetK8s
   - /etc/hosts
   - /etc/networks
   - /etc/hostname
@@ -18,6 +19,7 @@
 #  - /etc/iptables.ipv4.nat
 #  - /etc/default/hostapd
   - /etc/sysctl.conf
+  - /etc/crictl.yaml
   - /etc/apt/sources.list
 #  - /boot/cmdline.txt
 #  - /boot/config.txt
