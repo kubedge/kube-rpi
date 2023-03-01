@@ -1,0 +1,9 @@
+#!/bin/bash
+KUBEVERSION=v1.26.1
+kubeadm config images pull --kubernetes-version ${KUBEVERSION}
+swapoff -a
+kubeadm reset -f
+iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
+kubeadm init --config kubeadm-config.yaml "--ignore-preflight-errors=Mem" | tee kubeadm-init.txt
+grep "kubeadm join" kubeadm-init.txt > kubeadm-join.txt
+grep "discovery-token" kubeadm-init.txt >> kubeadm-join.txt
