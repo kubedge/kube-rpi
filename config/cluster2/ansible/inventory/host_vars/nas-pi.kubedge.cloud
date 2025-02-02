@@ -1,4 +1,4 @@
-ansible_host: 192.168.1.93
-ansible_port: 22
+ansible_host: 192.168.1.21
+ansible_port: 50102
 ansible_user: kubedge
 ansible_ssh_private_key_file: mgtkey
