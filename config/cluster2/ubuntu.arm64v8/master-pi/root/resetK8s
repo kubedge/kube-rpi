@@ -1,5 +1,5 @@
 #!/bin/bash
-KUBEVERSION=v1.26.1
+KUBEVERSION=v1.29.13
 kubeadm config images pull --kubernetes-version ${KUBEVERSION}
 swapoff -a
 kubeadm reset -f
