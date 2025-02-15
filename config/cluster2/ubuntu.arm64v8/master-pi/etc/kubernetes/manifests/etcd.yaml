@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
-    kubeadm.kubernetes.io/etcd.advertise-client-urls: https://192.168.2.1:2379
+    kubeadm.kubernetes.io/etcd.advertise-client-urls: https://192.168.50.100:2379
   creationTimestamp: null
   labels:
     component: etcd
@@ -13,18 +13,18 @@ spec:
   containers:
   - command:
     - etcd
-    - --advertise-client-urls=https://192.168.2.1:2379
+    - --advertise-client-urls=https://192.168.50.100:2379
     - --cert-file=/etc/kubernetes/pki/etcd/server.crt
     - --client-cert-auth=true
     - --data-dir=/var/lib/etcd
     - --experimental-initial-corrupt-check=true
     - --experimental-watch-progress-notify-interval=5s
-    - --initial-advertise-peer-urls=https://192.168.2.1:2380
-    - --initial-cluster=master-pi=https://192.168.2.1:2380
+    - --initial-advertise-peer-urls=https://192.168.50.100:2380
+    - --initial-cluster=master-pi=https://192.168.50.100:2380
     - --key-file=/etc/kubernetes/pki/etcd/server.key
-    - --listen-client-urls=https://127.0.0.1:2379,https://192.168.2.1:2379
+    - --listen-client-urls=https://127.0.0.1:2379,https://192.168.50.100:2379
     - --listen-metrics-urls=http://127.0.0.1:2381
-    - --listen-peer-urls=https://192.168.2.1:2380
+    - --listen-peer-urls=https://192.168.50.100:2380
     - --name=master-pi
     - --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
     - --peer-client-cert-auth=true
@@ -32,7 +32,7 @@ spec:
     - --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
     - --snapshot-count=10000
     - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
-    image: registry.k8s.io/etcd:3.5.6-0
+    image: registry.k8s.io/etcd:3.5.16-0
     imagePullPolicy: IfNotPresent
     livenessProbe:
       failureThreshold: 8
@@ -65,6 +65,7 @@ spec:
     - mountPath: /etc/kubernetes/pki/etcd
       name: etcd-certs
   hostNetwork: true
+  priority: 2000001000
   priorityClassName: system-node-critical
   securityContext:
     seccompProfile:
