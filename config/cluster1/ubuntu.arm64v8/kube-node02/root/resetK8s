@@ -1,0 +1,6 @@
+#!/bin/bash
+KUBEVERSION=v1.29.13
+kubeadm config images pull --kubernetes-version ${KUBEVERSION}
+swapoff -a
+kubeadm reset -f
+iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
